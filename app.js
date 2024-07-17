@@ -1,9 +1,18 @@
 const express = require("express");
+const cors = require("cors");
 const { sequelize } = require("./models");
 const app = express();
 
 app.set("port", 3000);
 
+app.use(
+	cors({
+		origin: '*', 
+		credentials: true,
+		withCredentials: true,
+		optionsSuccessStatus: 200,
+	})
+);
 sequelize
   .sync({ force: false })
   .then(() => {
