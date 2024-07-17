@@ -1,5 +1,9 @@
 const Sequelize = require("sequelize");
 const SpeedData = require("./SpeedData");
+const BeforeSpeedData = require("./BeforeSpeedData");
+const Whyrano = require("./whyrano");
+const before = require("./before");
+const Stop = require("./Stop");
 
 const env = process.env.NODE_ENV || "development";
 const config = require("../config/config")[env];
@@ -21,9 +25,21 @@ const sequelize = new Sequelize(
 db.sequelize = sequelize;
 
 db.SpeedData = SpeedData;
+db.BeforeSpeedData = BeforeSpeedData;
+db.Whyrano = Whyrano;
+db.before = before;
+db.Stop = Stop;
 
 SpeedData.initiate(sequelize);
+BeforeSpeedData.initiate(sequelize);
+Whyrano.initiate(sequelize);
+before.initiate(sequelize);
+Stop.initiate(sequelize);
 
 SpeedData.associate(db);
+BeforeSpeedData.associate(db);
+Whyrano.associate(db);
+before.associate(db);
+Stop.associate(db);
 
 module.exports = db;
