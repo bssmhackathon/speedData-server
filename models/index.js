@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const SpeedData = require("./SpeedData");
 const BeforeSpeedData = require("./BeforeSpeedData");
 const Whyrano = require("./whyrano");
-const before = require("./before");
+const before = require("./beforeDate");
 const Stop = require("./Stop");
 
 const env = process.env.NODE_ENV || "development";
@@ -17,7 +17,7 @@ const sequelize = new Sequelize(
     host: config.host,
     dialect: config.dialect,
     operatorsAliases: false,
-    timezone: '+09:00',
+    timezone: "+09:00",
     port: config.port,
   }
 );
