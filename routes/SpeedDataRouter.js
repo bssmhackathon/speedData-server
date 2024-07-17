@@ -20,7 +20,7 @@ router.get("/main", async (req, res) => {
         .status(200)
         .json({ speed: speedData.speed, message: "전조 증상 있음 !!" });
     } else if (speedData) {
-      res.status(200).json({ speed: speedData.speed });
+      res.status(200).json(speedData.speed);
     } else {
       res
         .status(404)
